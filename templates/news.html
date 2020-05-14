@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>News</h1>
+                </div><!-- .col -->
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </div><!-- .page-header -->
+
+    <div class="news-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                {% for event in events %}
+                    <div class="news-content">
+                        {% comment %} <a href="#"><img src="{% static 'images/1.jpg' %}" alt=""></a> {% endcomment %}
+
+                        <header class="entry-header d-flex flex-wrap justify-content-between align-items-center">
+                            <div class="header-elements">
+                                <div class="posted-date">{{ event.pub_date }}</div>
+
+                                <h2 class="entry-title"><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></h2>
+
+                                <div class="post-metas d-flex flex-wrap align-items-center">
+                                    <span class="cat-links">in Cause</span>
+                                   
+                                </div>
+                            </div>
+
+                            <div class="donate-icon">
+                                <a href="#"><img src="{% static 'images/donate-icon.png' %}" alt=""></a>
+                            </div>
+                        </header>
+
+                        <div class="entry-content">
+                            <p>{{ event.content|truncatewords:13 }}</p>
+                        </div>
+
+                        <footer class="entry-footer">
+                            <a href="{{ event.get_absolute_url }}" class="btn gradient-bg">Voir plus</a>
+                        </footer>
+                    </div>
+                {% endfor %}
+                {% if is_paginated %}
+                    <ul class="pagination d-flex flex-wrap align-items-center p-0">
+                        {% if page_obj.has_previous %}
+                            <li><a href="?page={{ page_obj.previous_page_number }}">&lt;</a></li>
+                        {% endif %}
+                        <li class="active"><a href="#">{{ page_obj.number }}</a></li>
+                        {% if page_obj.has_next %}
+                         <li><a href="?page={{page_obj.next_page_number }}">&gt;</a></li>
+                        {% endif %}
+                      
+                    </ul>
+                {% endif %}
+                </div>
+
+               
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

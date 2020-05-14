@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% load static %} 
+{% block content %}
+{% comment %} {% load crispy_forms_tags %} {% endcomment %}
+
+   <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Liste des Evenements</h1>
+                    {% for event in events %}
+
+                    <header class="entry-header d-flex flex-wrap justify-content-between align-items-center">
+                            <div class="header-elements">
+                                <div class="posted-date">{{ event.pub_date }}</div>
+
+                                <h2 class="entry-title"><a href="{{ event.get_absolute_event_url }}">{{ event.title }}</a></h2>
+
+                            </div>
+
+                        </header>
+
+                    {% endfor %}
+                     <span>
+                     <a href="{% url 'dash:create' %}">
+                            <input class="btn gradient-bg" type="submit" value="Créer un Evenement">
+                     </a>
+                        </span> 
+                </div><!-- .col -->
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </div><!-- .page-header -->
+
+    <div class="contact-page-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-7">
+                    
+
+                </div><!-- .col -->
+                <div class="col-12 col-lg-4">
+                    
+                </div>
+    
+
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </div>
+
+{% endblock content %}

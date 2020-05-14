@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% load static %} 
+{% block content %}
+{% load crispy_forms_tags %}
+
+   <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Poster un évenement</h1>
+                </div><!-- .col -->
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </div><!-- .page-header -->
+
+    <div class="contact-page-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-7">
+                    <form class="contact-form" method="POST">
+                    {% csrf_token %}
+                    {{ form.title}}
+                    {{ form.content }}
+                        <span>
+                            <input class="btn gradient-bg" type="submit" value="Modifier">
+                            <a class="btn orange-border" href="{{ object.get_absolute_delete_url }}" >
+                                Effacer
+                            </a>
+                        </span> 
+                    </form><!-- .contact-form -->
+
+                </div><!-- .col -->
+                <div class="col-12 col-lg-4">
+                    
+                </div>
+    
+
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </div>
+
+{% endblock content %}
