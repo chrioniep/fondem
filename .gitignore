@@ -1,2 +1,3 @@
 !.gitignore
-fondem/__pycache__/*.pyc
+*.pyc
+staticfiles/
