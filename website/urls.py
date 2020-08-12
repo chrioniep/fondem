@@ -13,4 +13,5 @@ urlpatterns = [
     path('single-news/<slug>', EventDetail.as_view(), name='single-news'),
     path('gallery/', TemplateView.as_view(template_name='gallery.html'), name='gallery'),
     path('causes/', TemplateView.as_view(template_name='causes.html'), name='causes'),
+    path('donate/', TemplateView.as_view(template_name='donate.html'), name='donate')
 ]
